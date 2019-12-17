@@ -4,7 +4,7 @@ A GitHub Action for building and deploying a Middleman repo to its `gh-pages` br
 
 ## Inputs
 
-* `GITHUB_REPOSITORY`: (__Required__) Repo where built website will be published to
+* `GITHUB_REPOSITORY`: Repo where built website will be published to (optional, defaults to repo name)
 * `BUILD_LOCATION`: Location where Middleman builds your website (optional, defaults to `build`)
 * `GITHUB_ACTOR`: Name of the deploy actor (optional, defaults to `deploy`)
 * `REMOTE_BRANCH`: Name of the branch to push the project to (optional, detaults to `gh-pages`)
@@ -29,8 +29,7 @@ jobs:
       - uses: actions/checkout@v1
       - name: Build & Deploy to GitHub Pages
         with:
-          GITHUB_REPOSITORY: me/my_repo
-        env:
+          REMOTE_BRANCH: gh-pages
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         uses: yurikoval/middleman-gh-pages-action@master
 ```

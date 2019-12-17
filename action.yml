@@ -11,11 +11,12 @@ runs:
 inputs:
   GITHUB_REPOSITORY:
     description: 'Github repository to push built site to'
-    required: true
+    required: false
+    default: ${{ github.repository }}
   GITHUB_ACTOR:
     description: 'Name of the deploy actor'
     required: false
-    default: 'deploy'
+    default: ${{ github.actor }}
   SITE_LOCATION:
     description: 'Location of Middleman project within your repo'
     required: false
@@ -28,3 +29,6 @@ inputs:
     description: 'Branch name to push built sity to'
     required: false
     default: 'gh-pages'
+  GITHUB_TOKEN:
+    description: 'Token for the repo. Can be passed in using $\{{ secrets.GITHUB_TOKEN }}'
+    required: true
