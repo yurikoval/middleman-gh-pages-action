@@ -1,0 +1,30 @@
+
+name: Middleman Github Pages Action
+description: 'Deploying your Middleman repo to the gh-pages branch of the same repository'
+author: "Yuri Koval'ov"
+branding:
+  icon: 'box'
+  color: 'orange'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+inputs:
+  GITHUB_REPOSITORY:
+    description: 'Github repository to push built site to'
+    required: true
+  GITHUB_ACTOR:
+    description: 'Name of the deploy actor'
+    required: false
+    default: 'deploy'
+  SITE_LOCATION:
+    description: 'Location of Middleman project within your repo'
+    required: false
+    default: '.'
+  BUILD_LOCATION:
+    description: 'Location where Middleman builds your website'
+    required: false
+    default: 'build'
+  REMOTE_BRANCH:
+    description: 'Branch name to push built sity to'
+    required: false
+    default: 'gh-pages'
