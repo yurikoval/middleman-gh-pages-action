@@ -8,6 +8,7 @@ branding:
 runs:
   using: 'docker'
   image: 'Dockerfile'
+  pre-entrypoint: 'pre-entrypoint.sh'
 inputs:
   GITHUB_REPOSITORY:
     description: 'Github repository to push built site to'

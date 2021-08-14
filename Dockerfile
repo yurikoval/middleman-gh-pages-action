@@ -15,6 +15,7 @@ LABEL "repository"="http://github.com/yurikoval/middleman-gh-pages-action"
 RUN apt-get update; \
   apt-get install -y --no-install-recommends nodejs
 
+COPY pre-entrypoint.sh /pre-entrypoint.sh
 ADD entrypoint.sh /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
