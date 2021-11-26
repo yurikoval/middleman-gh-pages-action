@@ -52,9 +52,12 @@ parse_args() {
 
   # which local directory the middleman site is in
   site_directory=${SITE_LOCATION:-}
-
+  echo $SITE_LOCATION
+  echo $site_directory
   # test these git push changes via dry run
   git_push_dry_run=${GIT_PUSH_DRY_RUN:-}
+  echo $GIT_PUSH_DRY_RUN
+  echo $git_push_dry_run
 
   # Source directory & target branch.
   deploy_directory=${BUILD_LOCATION:-build}
