@@ -174,7 +174,6 @@ commit+push() {
   git --work-tree "$deploy_directory" commit -m "$commit_message"
 
   echo "Pushing changes to remote target branch ${deploy_branch}"
-
   disable_expanded_output
 
   #--quiet is important here to avoid outputting the repo URL, which may contain a secret token
@@ -183,8 +182,7 @@ commit+push() {
     git_push_options="--dry-run ${git_push_options}"
   fi
 
-  echo git push $git_push_options $repo $deploy_branch
-  # git push $git_push_options $repo $deploy_branch
+  git push $git_push_options $repo $deploy_branch
 
   enable_expanded_output
 }
