@@ -78,6 +78,7 @@ main() {
   cd $site_directory
 
   # what do my repos look like
+  echo 'Git remotes'
   git remote -v
 
   echo 'Installing bundles...'
@@ -97,7 +98,9 @@ main() {
   fi
 
   commit_title=`git log -n 1 --format="%s" HEAD`
+  echo "The commit title: ${commit_title}"
   commit_hash=` git log -n 1 --format="%H" HEAD`
+  echo "The commit hash: ${commit_hash}"
 
   #default commit message uses last title if a custom one is not supplied
   if [[ -z $commit_message ]]; then
@@ -108,6 +111,8 @@ main() {
   if [ $append_hash = true ]; then
     commit_message="$commit_message"$'\n\n'"generated from commit $commit_hash"
   fi
+
+  echo "The commit message: ${commit_message}"
 
   previous_branch=`git rev-parse --abbrev-ref HEAD`
 
