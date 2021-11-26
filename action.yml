@@ -9,10 +9,14 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
 inputs:
-  GITHUB_ACTOR:
-    description: 'Name of the deploy actor'
+  GIT_USERNAME:
+    description: 'Name of that will show in git history'
     required: false
-    default: ${{ github.actor }}
+    default: 'zooniverse-ci'
+  GIT_EMAIL:
+    description: 'Email of the git user'
+    required: false
+    default: 'zooniverse-ci@zooniverse.org'
   GIT_PUSH_DRY_RUN:
     description: 'Dry run the github push'
     required: false
