@@ -140,12 +140,15 @@ main() {
 }
 
 initial_deploy() {
+    echo 'Running the initial deploy as branch does not exist locally'
   git --work-tree "$deploy_directory" checkout --orphan $deploy_branch
   git --work-tree "$deploy_directory" add --all
   commit+push
 }
 
 incremental_deploy() {
+  echo 'Running the incremental deploy as branch exists locally'
+
   #make deploy_branch the current branch
   git symbolic-ref HEAD refs/heads/$deploy_branch
   #put the previously committed contents of deploy_branch into the index
@@ -176,7 +179,7 @@ commit+push() {
   fi
 
   #--quiet is important here to avoid outputting the repo URL, which may contain a secret token
-  echo git push $git_push_options --quiet $repo $deploy_branch
+  git push $git_push_options --quiet $repo $deploy_branch
 
   enable_expanded_output
 }
