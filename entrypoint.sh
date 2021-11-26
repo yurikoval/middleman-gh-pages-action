@@ -65,7 +65,7 @@ parse_args() {
   default_email=${GIT_DEPLOY_EMAIL:-}
 
   #repository to deploy to. must be readable and writable.
-  repo=${GITHUB_REPOSITORY:-origin}
+  repo=origin
 
   #append commit hash to the end of message by default
   append_hash=${GIT_DEPLOY_APPEND_HASH:-true}
@@ -74,17 +74,23 @@ parse_args() {
 main() {
   parse_args "$@"
 
-  echo 'Installing bundles...'
+  echo "Changing directory to ${site_directory}..."
   cd $site_directory
 
+  # what do my repos look like
+  git remote -v
+
+  echo 'Installing bundles...'
   # install the gems from the site dir Gemfile (middleman etc)
   bundle install
 
+  echo 'Building clean...'
   # run a clean build
   bundle exec middleman build --clean
 
   enable_expanded_output
 
+  echo 'running git diff'
   if ! git diff --exit-code --quiet --cached; then
     echo Aborting due to uncommitted changes in the index >&2
     return 1
