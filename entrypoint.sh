@@ -175,6 +175,9 @@ commit+push() {
   git --work-tree "$deploy_directory" commit -m "$commit_message"
 
   echo "Pushing changes to remote target branch ${deploy_branch}"
+  # TODO: remove this one
+  git remote -v
+
   disable_expanded_output
   git_push_options=''
   if [[ -z "${git_push_dry_run}" ]]; then
