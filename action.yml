@@ -9,10 +9,6 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
 inputs:
-  GITHUB_REPOSITORY:
-    description: 'Github repository to push built site to'
-    required: false
-    default: ${{ github.repository }}
   GITHUB_ACTOR:
     description: 'Name of the deploy actor'
     required: false

@@ -4,7 +4,6 @@ A GitHub Action for building and deploying a Middleman repo to its `gh-pages` br
 
 ## Inputs
 
-* `GITHUB_REPOSITORY`: Repo where built website will be published to (optional, defaults to repo name)
 * `GITHUB_ACTOR`: Name of the deploy actor (optional, defaults to `deploy`)
 * `GIT_PUSH_DRY_RUN`: Test the git push action, (optional, defaults to `''`)
 * `SITE_LOCATION`: Location of your Middleman project within the repo (optional, defaults to project root)
