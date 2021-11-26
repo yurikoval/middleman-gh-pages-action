@@ -51,7 +51,7 @@ parse_args() {
   # vars should be declared here, with sane defaults if applicable.
 
   # which local directory the middleman site is in
-  site_directory=${INPUT_SITE_LOCATION:-}
+  site_directory=${SITE_LOCATION:-}
 
   # test these git push changes via dry run
   git_push_dry_run=${GIT_PUSH_DRY_RUN:-}
