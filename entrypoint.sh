@@ -51,27 +51,24 @@ parse_args() {
   # vars should be declared here, with sane defaults if applicable.
 
   # which local directory the middleman site is in
-  site_directory=${SITE_LOCATION:-}
-  echo $SITE_LOCATION
-  echo $site_directory
+  site_directory=${INPUT_SITE_LOCATION:-}
+
   # test these git push changes via dry run
-  git_push_dry_run=${GIT_PUSH_DRY_RUN:-}
-  echo $GIT_PUSH_DRY_RUN
-  echo $git_push_dry_run
+  git_push_dry_run=${INPUT_GIT_PUSH_DRY_RUN:-}
 
   # Source directory & target branch.
-  deploy_directory=${BUILD_LOCATION:-build}
-  deploy_branch=${REMOTE_BRANCH:-gh-pages}
+  deploy_directory=${INPUT_BUILD_LOCATION:-build}
+  deploy_branch=${INPUT_REMOTE_BRANCH:-gh-pages}
 
   #if no user identity is already set in the current git environment, use this:
-  default_username=${GIT_USERNAME:-}
-  default_email=${GIT_EMAIL:-}
+  default_username=${INPUT_GIT_USERNAME:-}
+  default_email=${INPUT_GIT_EMAIL:-}
 
   #repository to deploy to. must be readable and writable.
   repo=origin
 
   #append commit hash to the end of message by default
-  append_hash=${GIT_DEPLOY_APPEND_HASH:-true}
+  append_hash=${INPUT_GIT_DEPLOY_APPEND_HASH:-true}
 }
 
 main() {
