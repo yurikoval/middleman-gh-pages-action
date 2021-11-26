@@ -164,14 +164,13 @@ commit+push() {
   git --work-tree "$deploy_directory" commit -m "$commit_message"
 
   disable_expanded_output
-
+  git_push_options = ''
   if [[ -z "${git_push_dry_run}" ]]; then
-    #--quiet is important here to avoid outputting the repo URL, which may contain a secret token
-    git push --dry-run --quiet $repo $deploy_branch
-  else
-    #--quiet is important here to avoid outputting the repo URL, which may contain a secret token
-    # git push --quiet $repo $deploy_branch
+    git_push_options = '--dry-run'
   fi
+
+  #--quiet is important here to avoid outputting the repo URL, which may contain a secret token
+  echo git push $git_push_options --quiet $repo $deploy_branch
 
   enable_expanded_output
 }
