@@ -170,9 +170,11 @@ incremental_deploy() {
 }
 
 commit+push() {
+  echo 'Comitting changes to deploy branch'
   set_user_id
   git --work-tree "$deploy_directory" commit -m "$commit_message"
 
+  echo "Pushing changes to remote target branch ${deploy_branch}"
   disable_expanded_output
   git_push_options=''
   if [[ -z "${git_push_dry_run}" ]]; then
