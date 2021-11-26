@@ -1,10 +1,10 @@
 
 name: Middleman Github Pages Action
 description: 'Deploying your Middleman repo to the gh-pages branch of the same repository'
-author: "Yuri Koval'ov"
+author: "Zooniverse Team"
 branding:
   icon: 'box'
-  color: 'orange'
+  color: 'teal'
 runs:
   using: 'docker'
   image: 'Dockerfile'
@@ -17,6 +17,10 @@ inputs:
     description: 'Name of the deploy actor'
     required: false
     default: ${{ github.actor }}
+  GIT_PUSH_DRY_RUN:
+    description: 'Dry run the github push'
+    required: false
+    default: ''
   SITE_LOCATION:
     description: 'Location of Middleman project within your repo'
     required: false

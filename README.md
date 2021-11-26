@@ -31,5 +31,5 @@ jobs:
         with:
           REMOTE_BRANCH: gh-pages
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        uses: yurikoval/middleman-gh-pages-action@master
+        uses: zooniverse/middleman-gh-pages-action@master
 ```
