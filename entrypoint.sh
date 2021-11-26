@@ -55,8 +55,6 @@ parse_args() {
 
   # test these git push changes via dry run
   git_push_dry_run=${INPUT_GIT_PUSH_DRY_RUN:-}
-  echo $INPUT_GIT_PUSH_DRY_RUN
-  echo $git_push_dry_run
 
   # Source directory & target branch.
   deploy_directory=${INPUT_BUILD_LOCATION:-build}
@@ -89,7 +87,7 @@ main() {
 
   enable_expanded_output
 
-  echo 'running git diff'
+  echo 'Running git diff'
   if ! git diff --exit-code --quiet --cached; then
     echo Aborting due to uncommitted changes in the index >&2
     return 1
@@ -143,7 +141,7 @@ main() {
 }
 
 initial_deploy() {
-    echo 'Running the initial deploy as branch does not exist locally'
+  echo 'Running the initial deploy as branch does not exist locally'
   git --work-tree "$deploy_directory" checkout --orphan $deploy_branch
   git --work-tree "$deploy_directory" add --all
   commit+push
@@ -151,7 +149,6 @@ initial_deploy() {
 
 incremental_deploy() {
   echo 'Running the incremental deploy as branch exists locally'
-
   #make deploy_branch the current branch
   git symbolic-ref HEAD refs/heads/$deploy_branch
   #put the previously committed contents of deploy_branch into the index
@@ -177,18 +174,17 @@ commit+push() {
   git --work-tree "$deploy_directory" commit -m "$commit_message"
 
   echo "Pushing changes to remote target branch ${deploy_branch}"
-  # TODO: remove this one
-  git remote -v
 
   disable_expanded_output
-  git_push_options=''
-  if [[ -z "${git_push_dry_run}" ]]; then
-    git_push_options='--dry-run'
-  fi
 
   #--quiet is important here to avoid outputting the repo URL, which may contain a secret token
-  git push --dry-run --quiet $repo $deploy_branch
-  # git push $git_push_options --quiet $repo $deploy_branch
+  git_push_options='--quiet'
+  if [[ ! -z "${git_push_dry_run}" ]]; then
+    git_push_options="--dry-run ${git_push_options}"
+  fi
+
+  echo git push $git_push_options $repo $deploy_branch
+  # git push $git_push_options $repo $deploy_branch
 
   enable_expanded_output
 }
