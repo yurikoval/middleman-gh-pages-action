@@ -55,6 +55,8 @@ parse_args() {
 
   # test these git push changes via dry run
   git_push_dry_run=${INPUT_GIT_PUSH_DRY_RUN:-}
+  echo $INPUT_GIT_PUSH_DRY_RUN
+  echo $git_push_dry_run
 
   # Source directory & target branch.
   deploy_directory=${INPUT_BUILD_LOCATION:-build}
@@ -185,7 +187,8 @@ commit+push() {
   fi
 
   #--quiet is important here to avoid outputting the repo URL, which may contain a secret token
-  git push $git_push_options --quiet $repo $deploy_branch
+  git push --dry-run --quiet $repo $deploy_branch
+  # git push $git_push_options --quiet $repo $deploy_branch
 
   enable_expanded_output
 }
