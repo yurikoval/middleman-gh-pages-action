@@ -16,7 +16,7 @@ inputs:
   GIT_EMAIL:
     description: 'Email of the git user'
     required: false
-    default: 'zooniverse-ci@zooniverse.org'
+    default: 'ci@zooniverse.org'
   GIT_PUSH_DRY_RUN:
     description: 'Dry run the github push'
     required: false
