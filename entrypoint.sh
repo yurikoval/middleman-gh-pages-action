@@ -77,10 +77,6 @@ main() {
   echo "Changing directory to ${site_directory}..."
   cd $site_directory
 
-  # what do my repos look like
-  echo 'Git remotes'
-  git remote -v
-
   echo 'Installing bundles...'
   # install the gems from the site dir Gemfile (middleman etc)
   bundle install
