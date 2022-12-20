@@ -1,4 +1,4 @@
-FROM ruby:2.6
+FROM ruby:2.7-slim
 
 LABEL "com.github.actions.name"="Middleman Github Pages Action"
 LABEL "com.github.actions.description"="Deploying your Middleman repo to the gh-pages branch of the same repository"
