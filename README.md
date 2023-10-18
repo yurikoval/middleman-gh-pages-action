@@ -9,6 +9,7 @@ A GitHub Action for building and deploying a Middleman repo to its `gh-pages` br
 * `GITHUB_ACTOR`: Name of the deploy actor (optional, defaults to `deploy`)
 * `REMOTE_BRANCH`: Name of the branch to push the project to (optional, detaults to `gh-pages`)
 * `SITE_LOCATION`: Location of your Middleman project within the repo (optional, defaults to project root)
+* `CUSTOM_DOMAIN`: Custom domain used to create the CNAME file in the root directory (optional, no CNAME is created if value is not set)
 
 ## Example
 
