@@ -29,6 +29,10 @@ inputs:
     description: 'Branch name to push built sity to'
     required: false
     default: 'gh-pages'
+  CUSTOM_DOMAIN:
+    description: 'Custom domain for creating CNAME entry in the root directory'
+    required: false
+    default: ''
   GITHUB_TOKEN:
     description: 'Token for the repo. Can be passed in using $\{{ secrets.GITHUB_TOKEN }}'
     required: true

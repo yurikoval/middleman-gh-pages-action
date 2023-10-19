@@ -13,6 +13,12 @@ bundle exec middleman build
 
 echo 'Publishing site...'
 cd ${INPUT_BUILD_LOCATION}
+
+if [[ -n "${INPUT_CUSTOM_DOMAIN}" ]]; then
+  echo 'Creating CNAME file using the custom domain variable'
+  echo  ${INPUT_CUSTOM_DOMAIN} > CNAME
+fi
+
 remote_repo="https://${INPUT_GITHUB_ACTOR}:${INPUT_GITHUB_TOKEN}@github.com/${INPUT_GITHUB_REPOSITORY}.git" && \
 remote_branch=${INPUT_REMOTE_BRANCH}
 git init
